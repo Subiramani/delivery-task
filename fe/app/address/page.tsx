@@ -20,7 +20,7 @@ export default function AddressPage() {
         if (query.length < 3) return setSuggestions([]);
 
         const t = setTimeout(async () => {
-            const r = await fetch(`${process.env.API_URL}/suggest?q=${query}`);
+            const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/suggest?q=${query}`);
             setSuggestions(await r.json());
         }, 300); // debounce
 
@@ -46,7 +46,7 @@ export default function AddressPage() {
     }, []);
 
     const geocode = async () => {
-        const r = await fetch(`${process.env.API_URL}/geocode?q=${input}`);
+        const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/geocode?q=${input}`);
         const d = await r.json();
         setResult(d);
     };
