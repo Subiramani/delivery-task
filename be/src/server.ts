@@ -130,6 +130,10 @@ app.get("/suggest", async (req, res) => {
   );
 });
 
+app.get("/health", (_, res) => {
+  res.json({ status: "Render app check success" });
+});
+
 
 app.listen(4000, () => console.log("Backend on :4000"));
 
