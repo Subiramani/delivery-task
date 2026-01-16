@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Map from "./Map";
+import Map from "../components/Map";
 
 type Geo = { lat: number; lng: number };
 
@@ -28,6 +28,7 @@ export default function AddressPage() {
     }, [query]);
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
         navigator.geolocation.getCurrentPosition(
             (pos) => {
                 setGeo({

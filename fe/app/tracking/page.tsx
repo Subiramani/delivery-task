@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import TrackingMap from "./TrackingMap";
+import TrackingMap from "../components/TrackingMap";
 
 export default function TrackingPage() {
   const [points, setPoints] = useState<any[]>([]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const ws = new WebSocket("ws://localhost:5000");
 
     ws.onmessage = e => {
