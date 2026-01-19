@@ -9,7 +9,7 @@ export default function TrackingPage() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const ws = new WebSocket("ws://localhost:5000");
+    const ws = new WebSocket("wss://delivery-task.onrender.com/ws");
 
     ws.onmessage = e => {
       const p = JSON.parse(e.data);
@@ -21,3 +21,4 @@ export default function TrackingPage() {
 
   return <TrackingMap points={points} />;
 }
+
